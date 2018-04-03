@@ -38,15 +38,52 @@
 <body>
     <div id="hero" class="section">
         <div class="diagonal-line line-1"></div>
-        <div class="hero__table">
-            <div class="hero__table-cell">
-                <h1>Curly Braces</h1>
-                <p>Get in touch at <a href="mailto:info@curlybraces.co.uk">info@curlybraces.co.uk</a></p>
+        <div class="section__table">
+            <div class="section__table-cell">
+                <h1 id="hero__title">Curly Braces</h1>
+                <p>Get in touch at 
+                    <a class="red hover-orange" href="mailto:info@curlybraces.co.uk">
+                        info@curlybraces.co.uk
+                    </a>
+                </p>
             </div>
         </div>
         <div class="diagonal-line line-2"></div>
+        <div id="hero__next" class="show">
+            <div id="hero__next-arrow"></div>
+        </div>
     </div>
 
+    <div id="nav">
+        <h1>Curly Braces</h1>
+        <hr id="nav__line">
+    </div>
+  
+    <div id="about" class="section">
+        <div class="section__table">
+            <div class="section__table-cell">
+                <div id="json">
+                    <div id="json__code">
+                        <p>{</p>
+                            <p class="m-1">"email": <a class="orange hover-orange"href="mailto:info@curlybraces.co.uk">"info@curlybraces.co.uk"</a>,</p>
+                        <p class="m-1">"what_we_do": [</p>
+                        <p class="m-2"><span class="orange">"platforms"</span>,</p>
+                        <p class="m-2"><span class="orange">"branding"</span>,</p>
+                        <p class="m-2"><span class="orange">"apps"</span>,</p>
+                        <p class="m-2"><span class="orange">"integrations"</span>,</p>
+                        <p class="m-2">
+                            <span class="rainbow-text">"anything_you_can_imagine"</span>
+                        </p>
+                        <p class="m-1">]</p>
+                        <p>}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="http://curlybraces.co.uk/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://curlybraces.co.uk/js/main.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60448094-5"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

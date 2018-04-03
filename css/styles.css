@@ -6,12 +6,70 @@ html, body {
   height: 100%;
   font-family: 'Quicksand', 'Helvetica Neue', 'Arial', sans-serif;
 }
+html .red, body .red {
+  color: #C70025;
+}
+html .hover-red, body .hover-red {
+  color: #C70025;
+}
+html .orange, body .orange {
+  color: #d0782a;
+}
+html .hover-orange:hover, body .hover-orange:hover {
+  color: #d0782a;
+}
 
 .section {
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
+}
+.section .section__table {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.section .section__table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 30px;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #FFF;
+  opacity: 0;
+}
+#nav.show {
+  opacity: 1;
+}
+#nav #nav__line {
+  height: 2px;
+  background: #C70025;
+  width: 100%;
+  border: none;
+  margin: 0 auto;
+  transition: width .1s;
+}
+#nav h1 {
+  text-align: center;
+  font-size: 60px;
+  margin: 20px 0;
+}
+@media only screen and (max-width: 767px) {
+  #nav h1 {
+    font-size: 40px;
+  }
+}
+@media only screen and (max-width: 567px) {
+  #nav h1 {
+    font-size: 30px;
+  }
 }
 
 #hero .diagonal-line {
@@ -20,10 +78,8 @@ html, body {
   background: #C70025;
   position: absolute;
   transform: rotate(-45deg);
-  -webkit-animation-name: example;
-  -webkit-animation-duration: 1s;
-  animation-name: example;
-  animation-duration: 1s;
+  animation: grow 1s;
+  -webkit-animation: grow 1s;
 }
 #hero .diagonal-line.line-1 {
   top: 25%;
@@ -43,17 +99,6 @@ html, body {
     bottom: 15%;
   }
 }
-#hero .hero__table {
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-#hero .hero__table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  padding: 30px;
-}
 #hero h1 {
   margin: 0;
   padding: 0;
@@ -65,19 +110,131 @@ html, body {
     font-size: 40px;
   }
 }
+@media only screen and (max-width: 567px) {
+  #hero h1 {
+    font-size: 30px;
+  }
+}
 #hero p {
   margin: 10px 0 0;
   font-weight: 300;
 }
 #hero a {
   font-weight: 700;
-  color: #C70025;
 }
-#hero a:hover {
-  color: #ddca7e;
+#hero #hero__next {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 50%;
+  bottom: 10px;
+  margin-left: -10px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  opacity: 0;
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}
+#hero #hero__next.show {
+  opacity: 1;
+}
+#hero #hero__next #hero__next-arrow {
+  width: 100%;
+  height: 100%;
+  background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/76988-200.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
 }
 
-@-webkit-keyframes example {
+@media only screen and (max-width: 410px) {
+  #about .section__table-cell {
+    padding: 10px;
+  }
+}
+#about #json {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+#about #json__code {
+  display: inline-block;
+  text-align: left;
+}
+@media only screen and (max-width: 320px) {
+  #about #json__code {
+    width: 100%;
+  }
+}
+#about a {
+  text-decoration: none;
+}
+#about div {
+  text-align: center;
+}
+#about p {
+  margin: 0;
+  font-size: 30px;
+  font-family: monospace;
+  white-space: nowrap;
+}
+@media only screen and (max-width: 767px) {
+  #about p {
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 567px) {
+  #about p {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 467px) {
+  #about p {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #about p {
+    font-size: 14px;
+  }
+}
+#about .m-1 {
+  margin-left: 5%;
+}
+#about .m-2 {
+  margin-left: 10%;
+}
+#about .m-3 {
+  margin-left: 15%;
+}
+#about .m-4 {
+  margin-left: 20%;
+}
+#about .m-5 {
+  margin-left: 25%;
+}
+
+/*************
+* ANIMATIONS *
+**************/
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes grow {
   from {
     width: 0;
   }
@@ -85,11 +242,517 @@ html, body {
     width: 200%;
   }
 }
-@keyframes example {
+@keyframes grow {
   from {
     width: 0;
   }
   to {
     width: 200%;
   }
+}
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+  }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+.rainbow-text span,
+.rainbow-text-hover:hover span {
+  animation-name: rainbow-text-keys;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+@keyframes rainbow-text-keys {
+  0% {
+    color: #62d65c;
+  }
+  5% {
+    color: #8d5cd6;
+  }
+  10% {
+    color: #87d65c;
+  }
+  15% {
+    color: #5c9fd6;
+  }
+  20% {
+    color: #5cd662;
+  }
+  25% {
+    color: #5cd666;
+  }
+  30% {
+    color: #d65c74;
+  }
+  35% {
+    color: #5cd65c;
+  }
+  40% {
+    color: #5cc4d6;
+  }
+  45% {
+    color: #d6b65c;
+  }
+  50% {
+    color: #5c8bd6;
+  }
+  55% {
+    color: #d65cb6;
+  }
+  60% {
+    color: #5cb6d6;
+  }
+  65% {
+    color: #6ad65c;
+  }
+  70% {
+    color: #6cd65c;
+  }
+  75% {
+    color: #5cd6b1;
+  }
+  80% {
+    color: #5cd69f;
+  }
+  85% {
+    color: #5cd6b8;
+  }
+  90% {
+    color: #955cd6;
+  }
+  95% {
+    color: #5cafd6;
+  }
+  100% {
+    color: #5cd6a7;
+  }
+}
+.rainbow-text span:nth-of-type(1),
+.rainbow-text-hover:hover span:nth-of-type(1) {
+  animation-delay: -19.8s;
+}
+.rainbow-text span:nth-of-type(2),
+.rainbow-text-hover:hover span:nth-of-type(2) {
+  animation-delay: -19.6s;
+}
+.rainbow-text span:nth-of-type(3),
+.rainbow-text-hover:hover span:nth-of-type(3) {
+  animation-delay: -19.4s;
+}
+.rainbow-text span:nth-of-type(4),
+.rainbow-text-hover:hover span:nth-of-type(4) {
+  animation-delay: -19.2s;
+}
+.rainbow-text span:nth-of-type(5),
+.rainbow-text-hover:hover span:nth-of-type(5) {
+  animation-delay: -19s;
+}
+.rainbow-text span:nth-of-type(6),
+.rainbow-text-hover:hover span:nth-of-type(6) {
+  animation-delay: -18.8s;
+}
+.rainbow-text span:nth-of-type(7),
+.rainbow-text-hover:hover span:nth-of-type(7) {
+  animation-delay: -18.6s;
+}
+.rainbow-text span:nth-of-type(8),
+.rainbow-text-hover:hover span:nth-of-type(8) {
+  animation-delay: -18.4s;
+}
+.rainbow-text span:nth-of-type(9),
+.rainbow-text-hover:hover span:nth-of-type(9) {
+  animation-delay: -18.2s;
+}
+.rainbow-text span:nth-of-type(10),
+.rainbow-text-hover:hover span:nth-of-type(10) {
+  animation-delay: -18s;
+}
+.rainbow-text span:nth-of-type(11),
+.rainbow-text-hover:hover span:nth-of-type(11) {
+  animation-delay: -17.8s;
+}
+.rainbow-text span:nth-of-type(12),
+.rainbow-text-hover:hover span:nth-of-type(12) {
+  animation-delay: -17.6s;
+}
+.rainbow-text span:nth-of-type(13),
+.rainbow-text-hover:hover span:nth-of-type(13) {
+  animation-delay: -17.4s;
+}
+.rainbow-text span:nth-of-type(14),
+.rainbow-text-hover:hover span:nth-of-type(14) {
+  animation-delay: -17.2s;
+}
+.rainbow-text span:nth-of-type(15),
+.rainbow-text-hover:hover span:nth-of-type(15) {
+  animation-delay: -17s;
+}
+.rainbow-text span:nth-of-type(16),
+.rainbow-text-hover:hover span:nth-of-type(16) {
+  animation-delay: -16.8s;
+}
+.rainbow-text span:nth-of-type(17),
+.rainbow-text-hover:hover span:nth-of-type(17) {
+  animation-delay: -16.6s;
+}
+.rainbow-text span:nth-of-type(18),
+.rainbow-text-hover:hover span:nth-of-type(18) {
+  animation-delay: -16.4s;
+}
+.rainbow-text span:nth-of-type(19),
+.rainbow-text-hover:hover span:nth-of-type(19) {
+  animation-delay: -16.2s;
+}
+.rainbow-text span:nth-of-type(20),
+.rainbow-text-hover:hover span:nth-of-type(20) {
+  animation-delay: -16s;
+}
+.rainbow-text span:nth-of-type(21),
+.rainbow-text-hover:hover span:nth-of-type(21) {
+  animation-delay: -15.8s;
+}
+.rainbow-text span:nth-of-type(22),
+.rainbow-text-hover:hover span:nth-of-type(22) {
+  animation-delay: -15.6s;
+}
+.rainbow-text span:nth-of-type(23),
+.rainbow-text-hover:hover span:nth-of-type(23) {
+  animation-delay: -15.4s;
+}
+.rainbow-text span:nth-of-type(24),
+.rainbow-text-hover:hover span:nth-of-type(24) {
+  animation-delay: -15.2s;
+}
+.rainbow-text span:nth-of-type(25),
+.rainbow-text-hover:hover span:nth-of-type(25) {
+  animation-delay: -15s;
+}
+.rainbow-text span:nth-of-type(26),
+.rainbow-text-hover:hover span:nth-of-type(26) {
+  animation-delay: -14.8s;
+}
+.rainbow-text span:nth-of-type(27),
+.rainbow-text-hover:hover span:nth-of-type(27) {
+  animation-delay: -14.6s;
+}
+.rainbow-text span:nth-of-type(28),
+.rainbow-text-hover:hover span:nth-of-type(28) {
+  animation-delay: -14.4s;
+}
+.rainbow-text span:nth-of-type(29),
+.rainbow-text-hover:hover span:nth-of-type(29) {
+  animation-delay: -14.2s;
+}
+.rainbow-text span:nth-of-type(30),
+.rainbow-text-hover:hover span:nth-of-type(30) {
+  animation-delay: -14s;
+}
+.rainbow-text span:nth-of-type(31),
+.rainbow-text-hover:hover span:nth-of-type(31) {
+  animation-delay: -13.8s;
+}
+.rainbow-text span:nth-of-type(32),
+.rainbow-text-hover:hover span:nth-of-type(32) {
+  animation-delay: -13.6s;
+}
+.rainbow-text span:nth-of-type(33),
+.rainbow-text-hover:hover span:nth-of-type(33) {
+  animation-delay: -13.4s;
+}
+.rainbow-text span:nth-of-type(34),
+.rainbow-text-hover:hover span:nth-of-type(34) {
+  animation-delay: -13.2s;
+}
+.rainbow-text span:nth-of-type(35),
+.rainbow-text-hover:hover span:nth-of-type(35) {
+  animation-delay: -13s;
+}
+.rainbow-text span:nth-of-type(36),
+.rainbow-text-hover:hover span:nth-of-type(36) {
+  animation-delay: -12.8s;
+}
+.rainbow-text span:nth-of-type(37),
+.rainbow-text-hover:hover span:nth-of-type(37) {
+  animation-delay: -12.6s;
+}
+.rainbow-text span:nth-of-type(38),
+.rainbow-text-hover:hover span:nth-of-type(38) {
+  animation-delay: -12.4s;
+}
+.rainbow-text span:nth-of-type(39),
+.rainbow-text-hover:hover span:nth-of-type(39) {
+  animation-delay: -12.2s;
+}
+.rainbow-text span:nth-of-type(40),
+.rainbow-text-hover:hover span:nth-of-type(40) {
+  animation-delay: -12s;
+}
+.rainbow-text span:nth-of-type(41),
+.rainbow-text-hover:hover span:nth-of-type(41) {
+  animation-delay: -11.8s;
+}
+.rainbow-text span:nth-of-type(42),
+.rainbow-text-hover:hover span:nth-of-type(42) {
+  animation-delay: -11.6s;
+}
+.rainbow-text span:nth-of-type(43),
+.rainbow-text-hover:hover span:nth-of-type(43) {
+  animation-delay: -11.4s;
+}
+.rainbow-text span:nth-of-type(44),
+.rainbow-text-hover:hover span:nth-of-type(44) {
+  animation-delay: -11.2s;
+}
+.rainbow-text span:nth-of-type(45),
+.rainbow-text-hover:hover span:nth-of-type(45) {
+  animation-delay: -11s;
+}
+.rainbow-text span:nth-of-type(46),
+.rainbow-text-hover:hover span:nth-of-type(46) {
+  animation-delay: -10.8s;
+}
+.rainbow-text span:nth-of-type(47),
+.rainbow-text-hover:hover span:nth-of-type(47) {
+  animation-delay: -10.6s;
+}
+.rainbow-text span:nth-of-type(48),
+.rainbow-text-hover:hover span:nth-of-type(48) {
+  animation-delay: -10.4s;
+}
+.rainbow-text span:nth-of-type(49),
+.rainbow-text-hover:hover span:nth-of-type(49) {
+  animation-delay: -10.2s;
+}
+.rainbow-text span:nth-of-type(50),
+.rainbow-text-hover:hover span:nth-of-type(50) {
+  animation-delay: -10s;
+}
+.rainbow-text span:nth-of-type(51),
+.rainbow-text-hover:hover span:nth-of-type(51) {
+  animation-delay: -9.8s;
+}
+.rainbow-text span:nth-of-type(52),
+.rainbow-text-hover:hover span:nth-of-type(52) {
+  animation-delay: -9.6s;
+}
+.rainbow-text span:nth-of-type(53),
+.rainbow-text-hover:hover span:nth-of-type(53) {
+  animation-delay: -9.4s;
+}
+.rainbow-text span:nth-of-type(54),
+.rainbow-text-hover:hover span:nth-of-type(54) {
+  animation-delay: -9.2s;
+}
+.rainbow-text span:nth-of-type(55),
+.rainbow-text-hover:hover span:nth-of-type(55) {
+  animation-delay: -9s;
+}
+.rainbow-text span:nth-of-type(56),
+.rainbow-text-hover:hover span:nth-of-type(56) {
+  animation-delay: -8.8s;
+}
+.rainbow-text span:nth-of-type(57),
+.rainbow-text-hover:hover span:nth-of-type(57) {
+  animation-delay: -8.6s;
+}
+.rainbow-text span:nth-of-type(58),
+.rainbow-text-hover:hover span:nth-of-type(58) {
+  animation-delay: -8.4s;
+}
+.rainbow-text span:nth-of-type(59),
+.rainbow-text-hover:hover span:nth-of-type(59) {
+  animation-delay: -8.2s;
+}
+.rainbow-text span:nth-of-type(60),
+.rainbow-text-hover:hover span:nth-of-type(60) {
+  animation-delay: -8s;
+}
+.rainbow-text span:nth-of-type(61),
+.rainbow-text-hover:hover span:nth-of-type(61) {
+  animation-delay: -7.8s;
+}
+.rainbow-text span:nth-of-type(62),
+.rainbow-text-hover:hover span:nth-of-type(62) {
+  animation-delay: -7.6s;
+}
+.rainbow-text span:nth-of-type(63),
+.rainbow-text-hover:hover span:nth-of-type(63) {
+  animation-delay: -7.4s;
+}
+.rainbow-text span:nth-of-type(64),
+.rainbow-text-hover:hover span:nth-of-type(64) {
+  animation-delay: -7.2s;
+}
+.rainbow-text span:nth-of-type(65),
+.rainbow-text-hover:hover span:nth-of-type(65) {
+  animation-delay: -7s;
+}
+.rainbow-text span:nth-of-type(66),
+.rainbow-text-hover:hover span:nth-of-type(66) {
+  animation-delay: -6.8s;
+}
+.rainbow-text span:nth-of-type(67),
+.rainbow-text-hover:hover span:nth-of-type(67) {
+  animation-delay: -6.6s;
+}
+.rainbow-text span:nth-of-type(68),
+.rainbow-text-hover:hover span:nth-of-type(68) {
+  animation-delay: -6.4s;
+}
+.rainbow-text span:nth-of-type(69),
+.rainbow-text-hover:hover span:nth-of-type(69) {
+  animation-delay: -6.2s;
+}
+.rainbow-text span:nth-of-type(70),
+.rainbow-text-hover:hover span:nth-of-type(70) {
+  animation-delay: -6s;
+}
+.rainbow-text span:nth-of-type(71),
+.rainbow-text-hover:hover span:nth-of-type(71) {
+  animation-delay: -5.8s;
+}
+.rainbow-text span:nth-of-type(72),
+.rainbow-text-hover:hover span:nth-of-type(72) {
+  animation-delay: -5.6s;
+}
+.rainbow-text span:nth-of-type(73),
+.rainbow-text-hover:hover span:nth-of-type(73) {
+  animation-delay: -5.4s;
+}
+.rainbow-text span:nth-of-type(74),
+.rainbow-text-hover:hover span:nth-of-type(74) {
+  animation-delay: -5.2s;
+}
+.rainbow-text span:nth-of-type(75),
+.rainbow-text-hover:hover span:nth-of-type(75) {
+  animation-delay: -5s;
+}
+.rainbow-text span:nth-of-type(76),
+.rainbow-text-hover:hover span:nth-of-type(76) {
+  animation-delay: -4.8s;
+}
+.rainbow-text span:nth-of-type(77),
+.rainbow-text-hover:hover span:nth-of-type(77) {
+  animation-delay: -4.6s;
+}
+.rainbow-text span:nth-of-type(78),
+.rainbow-text-hover:hover span:nth-of-type(78) {
+  animation-delay: -4.4s;
+}
+.rainbow-text span:nth-of-type(79),
+.rainbow-text-hover:hover span:nth-of-type(79) {
+  animation-delay: -4.2s;
+}
+.rainbow-text span:nth-of-type(80),
+.rainbow-text-hover:hover span:nth-of-type(80) {
+  animation-delay: -4s;
+}
+.rainbow-text span:nth-of-type(81),
+.rainbow-text-hover:hover span:nth-of-type(81) {
+  animation-delay: -3.8s;
+}
+.rainbow-text span:nth-of-type(82),
+.rainbow-text-hover:hover span:nth-of-type(82) {
+  animation-delay: -3.6s;
+}
+.rainbow-text span:nth-of-type(83),
+.rainbow-text-hover:hover span:nth-of-type(83) {
+  animation-delay: -3.4s;
+}
+.rainbow-text span:nth-of-type(84),
+.rainbow-text-hover:hover span:nth-of-type(84) {
+  animation-delay: -3.2s;
+}
+.rainbow-text span:nth-of-type(85),
+.rainbow-text-hover:hover span:nth-of-type(85) {
+  animation-delay: -3s;
+}
+.rainbow-text span:nth-of-type(86),
+.rainbow-text-hover:hover span:nth-of-type(86) {
+  animation-delay: -2.8s;
+}
+.rainbow-text span:nth-of-type(87),
+.rainbow-text-hover:hover span:nth-of-type(87) {
+  animation-delay: -2.6s;
+}
+.rainbow-text span:nth-of-type(88),
+.rainbow-text-hover:hover span:nth-of-type(88) {
+  animation-delay: -2.4s;
+}
+.rainbow-text span:nth-of-type(89),
+.rainbow-text-hover:hover span:nth-of-type(89) {
+  animation-delay: -2.2s;
+}
+.rainbow-text span:nth-of-type(90),
+.rainbow-text-hover:hover span:nth-of-type(90) {
+  animation-delay: -2s;
+}
+.rainbow-text span:nth-of-type(91),
+.rainbow-text-hover:hover span:nth-of-type(91) {
+  animation-delay: -1.8s;
+}
+.rainbow-text span:nth-of-type(92),
+.rainbow-text-hover:hover span:nth-of-type(92) {
+  animation-delay: -1.6s;
+}
+.rainbow-text span:nth-of-type(93),
+.rainbow-text-hover:hover span:nth-of-type(93) {
+  animation-delay: -1.4s;
+}
+.rainbow-text span:nth-of-type(94),
+.rainbow-text-hover:hover span:nth-of-type(94) {
+  animation-delay: -1.2s;
+}
+.rainbow-text span:nth-of-type(95),
+.rainbow-text-hover:hover span:nth-of-type(95) {
+  animation-delay: -1s;
+}
+.rainbow-text span:nth-of-type(96),
+.rainbow-text-hover:hover span:nth-of-type(96) {
+  animation-delay: -0.8s;
+}
+.rainbow-text span:nth-of-type(97),
+.rainbow-text-hover:hover span:nth-of-type(97) {
+  animation-delay: -0.6s;
+}
+.rainbow-text span:nth-of-type(98),
+.rainbow-text-hover:hover span:nth-of-type(98) {
+  animation-delay: -0.4s;
+}
+.rainbow-text span:nth-of-type(99),
+.rainbow-text-hover:hover span:nth-of-type(99) {
+  animation-delay: -0.2s;
+}
+.rainbow-text span:nth-of-type(100),
+.rainbow-text-hover:hover span:nth-of-type(100) {
+  animation-delay: 0s;
+}
+
+.clearfix {
+  display: inline-block;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
